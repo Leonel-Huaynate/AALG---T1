@@ -6,7 +6,7 @@ class Puestos:
         self.plazas=plazas
         self.sueldo=sueldo
     def __str__(self):
-        return f"Cod:{self.codigo} | {self.descripcion} | Area:{self.areaSolicitante} | Plazas:{self.plazasRequeridas} | Sueldo:{self.sueldo}"
+        return f"Cod:{self.codigo} | {self.descripcion} | Area:{self.areaSoli} | Plazas:{self.plazas} | Sueldo:{self.sueldo}"
     def total(self):
         return self.plazas*self.sueldo
     
@@ -25,17 +25,19 @@ def AgregarPuesto(lista):
     sueldo=float(input("Ingrese el sueldo del puesto : "))
 
     if not (validarNum(codigo) and validarString(descripcion) and validarString(areaSoli) and validarNum(plazas) and validarNum(sueldo)):
-        return print("Ingrese datos validos")
+        print("Ingrese datos validos")
+        return
     
     for p in lista:
-        if(p.codigo==codigo or p.descripcion or p.areaSoli==areaSoli):
-            return print("Ya hay un puesto de trabajo igual")
+        if p.codigo==codigo or p.descripcion==descripcion or p.areaSoli==areaSoli:
+            print("Ya hay un puesto de trabajo igual")
+            return
 
-    list.append(Puestos(codigo,descripcion,areaSoli,plazas,sueldo))
+    lista.append(Puestos(codigo,descripcion,areaSoli,plazas,sueldo))
     print("Se registro el puesto")
 
 def Mostrar(lista):
-    for p in list:
+    for p in lista:
         print(p)
 
 def ordenar_Burbuja(lista):
